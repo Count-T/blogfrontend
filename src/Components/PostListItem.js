@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import "../App.scss";
 class PostListItem extends Component {
   constructor(props) {
     super(props);
@@ -21,11 +21,13 @@ class PostListItem extends Component {
       "December",
     ];
     const date = new Date(dateString);
-    return `${months[date.getMonth()]} ${date.getDay()}, ${date.getFullYear()}`;
+    return `${
+      months[date.getMonth()]
+    } ${date.getDate()}, ${date.getFullYear()}`;
   }
   formatTags(tags) {
     return tags.map((tag) => {
-      return <span key={tag}>{tag}</span>;
+      return <span key={tag}>{tag}, </span>;
     });
   }
   onClick(e) {
@@ -35,13 +37,15 @@ class PostListItem extends Component {
   render() {
     const { post } = this.props;
     return (
-      <button onClick={this.onClick}>
-        <h3>{post.title}</h3>
-        <div>{this.formatTags(post.tags)}</div>
-        <span>{this.formatDate(post.date)}</span>
-        <br />
-        <img src={post.imageUrl} alt="missing" />
-      </button>
+      <div className="post">
+        <button className="postborders" onClick={this.onClick}>
+          <h1 className="post-title">{post.title}</h1>
+          <div className="post-tags">{this.formatTags(post.tags)}</div>
+          <span>{this.formatDate(post.date)}</span>
+          <br />
+          <img className="post-image" src={post.imageUrl} alt="missing" />
+        </button>
+      </div>
     );
   }
 }

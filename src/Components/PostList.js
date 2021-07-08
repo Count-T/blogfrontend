@@ -6,12 +6,14 @@ class PostList extends Component {
     posts: [],
   };
   componentDidMount() {
+    this.setState({ posts: [] }); //reset the order
     this.getPosts();
   }
   async getPosts() {
     const res = await axios.get("http://localhost:5000/posts/");
     console.log(res);
     this.setState({ posts: res.data });
+    this.setState({ posts: this.state.posts.reverse() });
   }
 
   renderList() {
@@ -20,7 +22,7 @@ class PostList extends Component {
     });
   }
   render() {
-    return <div>{this.renderList()}</div>;
+    return <div className="slowfade-in">{this.renderList()}</div>;
   }
 }
 export default PostList;

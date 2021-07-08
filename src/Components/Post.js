@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import createDomPurify from "dompurify";
 import { JSDOM } from "jsdom";
 import axios from "axios";
+import "../App.scss";
 class Post extends Component {
   state = {
     post: {},
@@ -48,9 +49,19 @@ class Post extends Component {
   render() {
     return (
       <div>
-        <h1>{this.state.post.title}</h1>
-        <h3>{this.formatDate(this.state.post.date)}</h3>
-        {this.formatPost()}
+        <div className="mainpost-title">{this.state.post.title}</div>
+        <div className="mainpost-date">
+          {this.formatDate(this.state.post.date)}
+        </div>
+        <img
+          className="mainpost-image"
+          src={this.state.post.imageUrl}
+          alt="missing"
+        />
+        <br />
+        <div className="mainpost-content-centre ">
+          <p className="mainpost-content">{this.formatPost()}</p>
+        </div>
       </div>
     );
   }
