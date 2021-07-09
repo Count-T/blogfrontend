@@ -1,4 +1,4 @@
-import "./App.scss";
+import "./App.css";
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import PostList from "./Components/PostList";

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../App.scss";
+import "../App.css";
 class PostListItem extends Component {
   constructor(props) {
     super(props);

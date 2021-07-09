@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import createDomPurify from "dompurify";
 import { JSDOM } from "jsdom";
 import axios from "axios";
-import "../App.scss";
+import "../App.css";
 class Post extends Component {
   state = {
     post: {},
@@ -13,7 +13,7 @@ class Post extends Component {
 
   async getPost() {
     const res = await axios.get(
-      `http://localhost:5000/posts/${this.props.match.params.id}`
+      `https://blogtony.herokuapp.com/posts/${this.props.match.params.id}` //change this to heroku website later
     );
     this.setState({ post: res.data });
     console.log(res.data);
@@ -44,7 +44,9 @@ class Post extends Component {
       "December",
     ];
     const date = new Date(dateString);
-    return `${months[date.getMonth()]} ${date.getDay()}, ${date.getFullYear()}`;
+    return `${
+      months[date.getMonth()]
+    } ${date.getDate()}, ${date.getFullYear()}`;
   }
   render() {
     return (

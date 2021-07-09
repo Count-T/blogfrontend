@@ -10,7 +10,7 @@ class PostList extends Component {
     this.getPosts();
   }
   async getPosts() {
-    const res = await axios.get("http://localhost:5000/posts/");
+    const res = await axios.get("https://blogtony.herokuapp.com/posts"); //Change this with website later
     console.log(res);
     this.setState({ posts: res.data });
     this.setState({ posts: this.state.posts.reverse() });
